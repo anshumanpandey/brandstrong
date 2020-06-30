@@ -123,6 +123,7 @@ $routes->group('/', function($routes){
 	$routes->post('maincate/edit', 'Customer::maincateEdit');
 	
 	$routes->post('deletedata', 'Customer::deleteData');
+	$routes->post('stripe','Stripe::payment');
 });
 
 
@@ -143,3 +144,4 @@ if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
 {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
+

@@ -1,5 +1,5 @@
 <!-- begin:: Footer -->
-					<div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
+<div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
 						<div class="kt-container  kt-container--fluid ">
 							<div class="kt-footer__copyright">
 								2020&nbsp;&copy;&nbsp;<a href="<?= base_url('dashboard') ?>" target="_blank" class="kt-link">Lobby</a>
@@ -117,6 +117,51 @@
             }
         }
     </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+
+<script type="text/javascript">
+  function pay(amount) {
+    var handler = StripeCheckout.configure({
+		// Please change this key with the real key when you are ready to make real payments.
+      key: 'pk_test_51GyCeJKr4zKjhmBGcz1gmgVpQkOgxM2HBmym02kHruG87pFSaLlyciQmMxrLL231XphTBqNe3mi6bPBmYYVYBdtw006EvE77gm',
+      locale: 'auto',
+      token: function (token) {
+        // You can access the token ID with `token.id`.
+        // Get the token ID to your server-side code for use.
+        console.log('Token Created!!');
+        // console.log(amount);
+        $('#token_response').html(JSON.stringify(token));
+  
+        $.ajax({
+			    //path to the controller
+          url:"<?= base_url("stripe") ?>",
+              
+          method: 'post',
+          data: { tokenId: token.id, amount: amount },
+          dataType: "json",
+          success: ( response ) =>{
+            console.log(response.data);
+            // $('#token_response').append( '<br />' + JSON.stringify(response.data));
+          },
+          error:(error) =>{
+            console.log(error);
+          }
+        })
+		// .done(swal("Good job!", "You have successfully subscribed!", "success"));
+      }
+    });
+   
+    handler.open({
+      name: 'Stripe Payment',
+      description: 'Monthly Subscription',
+      amount: amount * 100
+    });
+  }
+</script>
 
 		<!--end::Global Theme Bundle -->
 	</body>

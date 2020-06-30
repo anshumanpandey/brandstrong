@@ -1,5 +1,5 @@
 <?php
-	include "header.php";
+    include "header.php";
 ?>
 
 
@@ -130,7 +130,8 @@
 </ul>  
 </div>                                          
 </div>
- <a href="#" style="background-color:#fcc433; border:1px #fcc433 solid; color:#FFF; padding: 9px 33px;border-radius: 5px;">Activate Your Subscription First</a> </div>
+<button style="background-color:#fcc433; border:1px #fcc433 solid; color:#FFF; padding: 9px 33px;border-radius: 5px;" class="btn btn-info btn-block" onclick="pay(399)">Activate Your Subscription First</button>
+ </div>
  
  
  
@@ -165,7 +166,8 @@
 </div>
 
 </div>
-<a href="#" style="background-color:#fcc433; border:1px #fcc433 solid; color:#FFF; padding: 9px 33px;border-radius: 5px;">Activate Your Subscription First</a>
+<!-- <a href="#" style="background-color:#fcc433; border:1px #fcc433 solid; color:#FFF; padding: 9px 33px;border-radius: 5px;">Activate Your Subscription First</a> -->
+<button style="background-color:#fcc433; border:1px #fcc433 solid; color:#FFF; padding: 9px 33px;border-radius: 5px;" class="btn btn-info btn-block" onclick="pay(699)">Activate Your Subscription First</button>
 </div>
 
 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
@@ -204,7 +206,8 @@
 </div>
 
 </div>
-<a href="#" style="background-color:#fcc433; border:1px #fcc433 solid; color:#FFF; padding: 9px 33px;border-radius: 5px;">Activate Your Subscription First</a>
+<!-- <a href="#" style="background-color:#fcc433; border:1px #fcc433 solid; color:#FFF; padding: 9px 33px;border-radius: 5px;"></a> -->
+<button style="background-color:#fcc433; border:1px #fcc433 solid; color:#FFF; padding: 9px 33px;border-radius: 5px;" class="btn btn-info btn-block" onclick="pay(999)">Activate Your Subscription First</button>
 </div>
                                             
 </div> 
@@ -232,7 +235,11 @@
 
 						<!-- end:: Content -->
 					</div>
+					<div class="container">
+					 <div class="row">
+      <div class="col-md-12"><pre id="token_response"></pre></div>
+    
 
 <?php
-	include "footer.php";
+    include "footer.php";
 ?>
