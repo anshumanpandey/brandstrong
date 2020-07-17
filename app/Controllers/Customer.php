@@ -725,6 +725,66 @@ If you ignore this message, your password won't be changed.
 	{
 		return view('customer/upgrades');
 	}
+
+    public function payment()
+    {
+        
+		//require_once('application/libraries/stripe-php/init.php');
+		require_once 'vendor/autoload.php';
+
+     
+        $stripeSecret = 'sk_test_HhxyRxk4c5NKiesy0OmkuztJ00spfFLR25';        
+        $stripe = new \Stripe\StripeClient($stripeSecret);
+        try {
+			$paymentMethod = $stripe->paymentMethods->create([
+				'type' => 'card',
+				'card' => [
+					'number' => '4242424242424242',
+					'exp_month' => 7,
+					'exp_year' => 2021,
+					'cvc' => '314',
+				],
+			]);
+			echo '<pre>';
+			print_r($paymentMethod);
+			echo '</pre>';
+
+			$customer = $stripe->customers->create([
+				'name' => 'Test customer',
+				'email' => 'test@gmail.com',
+				'description' => 'My First Test Customer (created for API docs)',
+				'payment_method' => $paymentMethod->id,
+				'invoice_settings' => array (
+					'default_payment_method' => $paymentMethod->id
+				)
+			]);
+			echo '<pre>';
+			print_r($customer);
+			echo '</pre>';
+
+			$subscriptions = $stripe->subscriptions->create([
+				'customer' => $customer->id,
+				'items' => array(
+					array(
+						'plan' => 'price_1H5mg0Ikc0DnWOSShs8A5RBI', 
+						'quantity' => 1 
+					)
+				)
+			]);
+			echo '<pre>';
+			print_r($subscriptions);
+			echo '</pre>';
+
+
+        } catch (\Throwable $th) {
+			echo '<pre>';
+			print_r($th);
+			echo '</pre>';die;
+
+            echo json_decode($th->getMessage());
+        }
+	}
+	
 	public function changepass()
 	{
 		return view('customer/changepass');
