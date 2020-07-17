@@ -124,39 +124,29 @@
 <script src="https://js.stripe.com/v3/"></script>
 
 <script type="text/javascript">
-  function pay(amount) {
+  function pay(amount, planID) {
     var handler = StripeCheckout.configure({
-		// Please change this key with the real key when you are ready to make real payments.
-      key: 'pk_test_51GyCeJKr4zKjhmBGcz1gmgVpQkOgxM2HBmym02kHruG87pFSaLlyciQmMxrLL231XphTBqNe3mi6bPBmYYVYBdtw006EvE77gm',
-      locale: 'auto',
-      token: function (token) {
-        // You can access the token ID with `token.id`.
-        // Get the token ID to your server-side code for use.
-        console.log('Token Created!!');
-        // console.log(amount);
-        $('#token_response').html(JSON.stringify(token));
-  
-        $.ajax({
-			    //path to the controller
-          url:"<?= base_url("stripe") ?>",
-              
-          method: 'post',
-          data: { tokenId: token.id, amount: amount },
-          dataType: "json",
-          success: ( response ) =>{
-            console.log(response.data);
-            // $('#token_response').append( '<br />' + JSON.stringify(response.data));
-          },
-          error:(error) =>{
-            console.log(error);
-          }
-        })
-		// .done(swal("Good job!", "You have successfully subscribed!", "success"));
-      }
+        key: 'pk_test_KbgL157bj6xPaypYoFZ9QhSh00xnDnJfXp',
+        locale: 'auto',
+        token: function (token) {
+            $('#token_response').html(JSON.stringify(token));
+            $.ajax({
+                url:"<?= base_url("payment") ?>",              
+                method: 'post',
+                data: { tokenId: token.id, planID: planID },
+                dataType: "json",
+                success: ( response ) =>{
+                    console.log(response.data);
+                },
+                error:(error) =>{
+                    console.log(error);
+                }
+            });
+        }
     });
    
     handler.open({
-      name: 'Stripe Payment',
+      name: 'Payment',
       description: 'Monthly Subscription',
       amount: amount * 100
     });

@@ -115,6 +115,7 @@ $routes->group('/', function($routes){
 	$routes->get('notification/settings', 'Customer::notificationSettings');
 	$routes->get('upgrades', 'Customer::upgrades');
 	$routes->get('payment', 'Customer::payment');
+	$routes->post('payment', 'Customer::payment');
 
 	$routes->get('changepass', 'Customer::changepass');
 	$routes->post('changepass', 'Customer::changepassEdit');
