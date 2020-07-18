@@ -124,7 +124,7 @@
 <script src="https://js.stripe.com/v3/"></script>
 
 <script type="text/javascript">
-  function pay(amount, planID) {
+  function pay(amount, planID, subscriptionID) {
     var handler = StripeCheckout.configure({
         key: 'pk_test_KbgL157bj6xPaypYoFZ9QhSh00xnDnJfXp',
         locale: 'auto',
@@ -133,10 +133,17 @@
             $.ajax({
                 url:"<?= base_url("payment") ?>",              
                 method: 'post',
-                data: { tokenId: token.id, planID: planID },
+                data: { tokenId: token.id, planID: planID, subscriptionID: subscriptionID },
                 dataType: "json",
                 success: ( response ) =>{
-                    console.log(response.data);
+                    console.log(response);
+                    if (response.error == false) {
+                        alert(response.message);
+                        window.location.reload();
+                    } else {
+                        alert(response.message);
+                        return false;
+                    }
                 },
                 error:(error) =>{
                     console.log(error);
@@ -147,6 +154,7 @@
    
     handler.open({
       name: 'Payment',
+      email: '<?php echo session('CustomerEmail'); ?>',
       description: 'Monthly Subscription',
       amount: amount * 100
     });

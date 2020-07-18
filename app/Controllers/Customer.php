@@ -95,11 +95,25 @@ class Customer extends BaseController
 		if(empty($check)){
 			$data['status']=['status'=>0,'message'=>"Invalid user name and password"];
 		}else{
+			$subscription = $this->db->table('subscriptions')->where("plan_id", $check->active_subscription_id)->get()->getRow();
 			$newdata = [
 				'CustomerFirstName'  => $check->FirstName,
 				'CustomerLastName'     => $check->LastName,
 				'CustomerId' => $check->CustomerId,
 				'CustomerProfilePic' => $check->ProfilePic,
+				'CustomerEmail' => $check->EmailId,
+				'CustomerStripeID' => $check->stripe_customer_id,
+				'CustomerStripeSubscriptionID' => $check->active_stripe_subscription_id,
+				'CustomerSubscriptionID' => $check->active_subscription_id,
+				'access_to_training_tools' => ($subscription != null) ? $subscription->access_to_training_tools : '',
+				'no_active_marketing_request' => ($subscription != null) ? $subscription->no_active_marketing_request : 0,
+				'marketing_review' => ($subscription != null) ? $subscription->marketing_review : '',
+				'brand_style_guide' => ($subscription != null) ? $subscription->brand_style_guide : '',
+				'dedicated_support' => ($subscription != null) ? $subscription->dedicated_support : '',
+				'monthly_website_analytics' => ($subscription != null) ? $subscription->monthly_website_analytics : '',
+				'rush_job_access' => ($subscription != null) ? $subscription->rush_job_access : '',
+				'team_accounts' => ($subscription != null) ? $subscription->team_accounts : '',
+				'paid_stock_photos' => ($subscription != null) ? $subscription->paid_stock_photos : ''
 			];
 			$this->session->set($newdata);
 		//	echo "Aaaaaaaaaaaaaa".$this->session->get('FirstName');
@@ -723,7 +737,8 @@ If you ignore this message, your password won't be changed.
 	}
 	public function upgrades()
 	{
-		return view('customer/upgrades');
+		$data['subscriptions'] = $this->db->table('subscriptions')->get()->getResult('array');
+		return view('customer/upgrades', $data);
 	}
 
     public function payment()
@@ -733,13 +748,12 @@ If you ignore this message, your password won't be changed.
         $stripe = new \Stripe\StripeClient($stripeSecret);
         try {
 			$customer = $stripe->customers->create([
-				'name' => 'Test customer',
-				'email' => 'test@gmail.com',
-				'description' => 'My First Test Customer (created for API docs)',
+				'name' => session('CustomerFirstName').' '.session('CustomerLastName'),
+				'email' => session('CustomerEmail'),
 				'source' => $this->request->getpost('tokenId')
 			]);
 
-			$subscriptions = $stripe->subscriptions->create([
+			$subscription = $stripe->subscriptions->create([
 				'customer' => $customer->id,
 				'items' => array(
 					array(
@@ -748,8 +762,42 @@ If you ignore this message, your password won't be changed.
 					)
 				)
 			]);
+
+			$data = [
+				'stripe_customer_id' => $customer->id,
+				'active_stripe_subscription_id' => $subscription->id,
+				'active_subscription_id' => $this->request->getpost('subscriptionID')
+			];
+			$this->customer->update(session('CustomerId'), $data);
+
+			$subscriptionInfo = $this->db->table('subscriptions')->where("plan_id", $this->request->getpost('subscriptionID'))->get()->getRow();
+			$newdata = [
+				'CustomerStripeID' => $customer->id,
+				'CustomerStripeSubscriptionID' => $subscription->id,
+				'CustomerSubscriptionID' => $this->request->getpost('subscriptionID'),
+				'access_to_training_tools' => ($subscriptionInfo != null) ? $subscriptionInfo->access_to_training_tools : '',
+				'no_active_marketing_request' => ($subscriptionInfo != null) ? $subscriptionInfo->no_active_marketing_request : 0,
+				'marketing_review' => ($subscriptionInfo != null) ? $subscriptionInfo->marketing_review : '',
+				'brand_style_guide' => ($subscriptionInfo != null) ? $subscriptionInfo->brand_style_guide : '',
+				'dedicated_support' => ($subscriptionInfo != null) ? $subscriptionInfo->dedicated_support : '',
+				'monthly_website_analytics' => ($subscriptionInfo != null) ? $subscriptionInfo->monthly_website_analytics : '',
+				'rush_job_access' => ($subscriptionInfo != null) ? $subscriptionInfo->rush_job_access : '',
+				'team_accounts' => ($subscriptionInfo != null) ? $subscriptionInfo->team_accounts : '',
+				'paid_stock_photos' => ($subscriptionInfo != null) ? $subscriptionInfo->paid_stock_photos : '',
+			];
+			$this->session->set($newdata);
+
+			echo json_encode(array(
+				'error' => false,
+				'message' => "Payment successfully processed. Thank you!"
+			));
         } catch (\Throwable $th) {
-            echo json_decode($th->getMessage());
+			echo json_encode(array(
+				'error' => true,
+				'message' => "Something went wrong with processing payment. Please try again!",
+			));
+
+            //echo json_decode($th->getMessage());
         }
 	}
 	
