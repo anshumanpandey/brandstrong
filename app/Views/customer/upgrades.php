@@ -7,7 +7,7 @@ include "header.php";
    <!-- end:: Subheader -->
    <!-- begin:: Content -->
    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-      <div class="row">
+      <!-- <div class="row">
          <div class="col">
             <div class="alert alert-light alert-elevate fade show" role="alert">
                <div class="alert-text">
@@ -17,7 +17,7 @@ include "header.php";
                </div>
             </div>
          </div>
-      </div>
+      </div> -->
       <div class="row">
          <div class="col-xl-12">
             <!--begin::Portlet-->
