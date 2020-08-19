@@ -1,0 +1,44 @@
+CRITICAL - 2020-07-17 01:05:15 --> Cannot call constructor
+#0 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Stripe->__construct()
+#1 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#2 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\wamp64\www\brandstrong\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-07-17 01:05:17 --> Cannot call constructor
+#0 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Stripe->__construct()
+#1 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#2 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\wamp64\www\brandstrong\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-07-17 01:06:20 --> App\Controllers\Customer::payment(): Failed opening required 'application/libraries/stripe-php/init.php' (include_path='.;C:\php\pear')
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2020-07-17 01:07:33 --> App\Controllers\Customer::payment(): Failed opening required 'application/libraries/stripe-php/init.php' (include_path='.;C:\php\pear')
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2020-07-17 01:07:34 --> App\Controllers\Customer::payment(): Failed opening required 'application/libraries/stripe-php/init.php' (include_path='.;C:\php\pear')
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2020-07-17 01:07:36 --> App\Controllers\Customer::payment(): Failed opening required 'application/libraries/stripe-php/init.php' (include_path='.;C:\php\pear')
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2020-07-17 03:13:34 --> Call to undefined function App\Controllers\pre()
+#0 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Customer->payment()
+#1 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+#2 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\wamp64\www\brandstrong\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-07-17 04:03:17 --> Undefined variable: paymentMethod
+#0 D:\wamp64\www\brandstrong\app\Controllers\Customer.php(732): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\wamp64\\www\\b...', 732, Array)
+#1 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Customer->payment()
+#2 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+#3 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\brandstrong\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-07-17 04:04:19 --> Undefined variable: paymentMethod
+#0 D:\wamp64\www\brandstrong\app\Controllers\Customer.php(732): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\wamp64\\www\\b...', 732, Array)
+#1 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Customer->payment()
+#2 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+#3 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\brandstrong\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}

@@ -1,0 +1,10 @@
+CRITICAL - 2020-07-25 04:56:17 --> Invalid argument supplied for foreach()
+#0 /home/gvdevyq2/public_html/branding/app/Views/customer/upgrades.php(85): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', '/home/gvdevyq2/...', 85, Array)
+#1 /home/gvdevyq2/public_html/branding/vendor/codeigniter4/framework/system/View/View.php(246): include('/home/gvdevyq2/...')
+#2 /home/gvdevyq2/public_html/branding/vendor/codeigniter4/framework/system/Common.php(1119): CodeIgniter\View\View->render('customer/upgrad...', Array, true)
+#3 /home/gvdevyq2/public_html/branding/app/Controllers/Customer.php(726): view('customer/upgrad...')
+#4 /home/gvdevyq2/public_html/branding/vendor/codeigniter4/framework/system/CodeIgniter.php(918): App\Controllers\Customer->upgrades()
+#5 /home/gvdevyq2/public_html/branding/vendor/codeigniter4/framework/system/CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+#6 /home/gvdevyq2/public_html/branding/vendor/codeigniter4/framework/system/CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/gvdevyq2/public_html/branding/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}

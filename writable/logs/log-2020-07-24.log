@@ -1,0 +1,21 @@
+CRITICAL - 2020-07-24 03:38:15 --> Unable to connect to the database.
+#0 /home/gvdevyq2/public_html/branding/vendor/codeigniter4/framework/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->initialize()
+#1 /home/gvdevyq2/public_html/branding/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1860): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 /home/gvdevyq2/public_html/branding/vendor/codeigniter4/framework/system/Model.php(506): CodeIgniter\Database\BaseBuilder->get()
+#3 /home/gvdevyq2/public_html/branding/app/Controllers/Customer.php(94): CodeIgniter\Model->first()
+#4 /home/gvdevyq2/public_html/branding/vendor/codeigniter4/framework/system/CodeIgniter.php(918): App\Controllers\Customer->checkLogin()
+#5 /home/gvdevyq2/public_html/branding/vendor/codeigniter4/framework/system/CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+#6 /home/gvdevyq2/public_html/branding/vendor/codeigniter4/framework/system/CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/gvdevyq2/public_html/branding/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-07-24 03:38:15 --> Uncaught ErrorException: print_r(): Property access is not allowed yet in /home/gvdevyq2/public_html/branding/app/Views/errors/html/error_exception.php:100
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'print_r(): Prop...', '/home/gvdevyq2/...', 100, Array)
+#1 /home/gvdevyq2/public_html/branding/app/Views/errors/html/error_exception.php(100): print_r(Object(App\Controllers\Customer), true)
+#2 /home/gvdevyq2/public_html/branding/vendor/codeigniter4/framework/system/Debug/Exceptions.php(308): include('/home/gvdevyq2/...')
+#3 /home/gvdevyq2/public_html/branding/vendor/codeigniter4/framework/system/Debug/Exceptions.php(174): CodeIgniter\Debug\Exceptions->render(Object(CodeIgniter\Database\Exceptions\DatabaseException), 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Database\Exceptions\DatabaseException))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}

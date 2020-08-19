@@ -1,0 +1,59 @@
+CRITICAL - 2020-07-18 01:07:26 --> Cannot use object of type stdClass as array
+#0 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\View\View.php(246): include()
+#1 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('customer/upgrad...', Array, true)
+#2 D:\wamp64\www\brandstrong\app\Controllers\Customer.php(730): view('customer/upgrad...', Array)
+#3 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Customer->upgrades()
+#4 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+#5 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\brandstrong\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-07-18 01:13:06 --> Undefined property: CodeIgniter\View\View::$session
+#0 D:\wamp64\www\brandstrong\app\Views\customer\footer.php(128): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\wamp64\\www\\b...', 128, Array)
+#1 D:\wamp64\www\brandstrong\app\Views\customer\upgrades.php(128): include('D:\\wamp64\\www\\b...')
+#2 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\View\View.php(246): include('D:\\wamp64\\www\\b...')
+#3 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('customer/upgrad...', Array, true)
+#4 D:\wamp64\www\brandstrong\app\Controllers\Customer.php(730): view('customer/upgrad...', Array)
+#5 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Customer->upgrades()
+#6 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+#7 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\wamp64\www\brandstrong\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-07-18 01:37:18 --> No such plan: price_1H1osvIkc0DnWOSSv5nNn9AE; a similar object exists in live mode, but a test mode key was used to make this request.
+#0 D:\wamp64\www\brandstrong\vendor\stripe\stripe-php\lib\Exception\InvalidRequestException.php(35): Stripe\Exception\ApiErrorException::factory('No such plan: p...', 400, '{\n  "error": {\n...', Array, Object(Stripe\Util\CaseInsensitiveArray), 'resource_missin...')
+#1 D:\wamp64\www\brandstrong\vendor\stripe\stripe-php\lib\ApiRequestor.php(187): Stripe\Exception\InvalidRequestException::factory('No such plan: p...', 400, '{\n  "error": {\n...', Array, Object(Stripe\Util\CaseInsensitiveArray), 'resource_missin...', 'plan')
+#2 D:\wamp64\www\brandstrong\vendor\stripe\stripe-php\lib\ApiRequestor.php(149): Stripe\ApiRequestor::_specificAPIError('{\n  "error": {\n...', 400, Object(Stripe\Util\CaseInsensitiveArray), Array, Array)
+#3 D:\wamp64\www\brandstrong\vendor\stripe\stripe-php\lib\ApiRequestor.php(438): Stripe\ApiRequestor->handleErrorResponse('{\n  "error": {\n...', 400, Object(Stripe\Util\CaseInsensitiveArray), Array)
+#4 D:\wamp64\www\brandstrong\vendor\stripe\stripe-php\lib\ApiRequestor.php(118): Stripe\ApiRequestor->_interpretResponse('{\n  "error": {\n...', 400, Object(Stripe\Util\CaseInsensitiveArray))
+#5 D:\wamp64\www\brandstrong\vendor\stripe\stripe-php\lib\BaseStripeClient.php(134): Stripe\ApiRequestor->request('post', '/v1/subscriptio...', Array, Array)
+#6 D:\wamp64\www\brandstrong\vendor\stripe\stripe-php\lib\Service\AbstractService.php(59): Stripe\BaseStripeClient->request('post', '/v1/subscriptio...', Array, Object(Stripe\Util\RequestOptions))
+#7 D:\wamp64\www\brandstrong\vendor\stripe\stripe-php\lib\Service\SubscriptionService.php(68): Stripe\Service\AbstractService->request('post', '/v1/subscriptio...', Array, NULL)
+#8 D:\wamp64\www\brandstrong\app\Controllers\Customer.php(764): Stripe\Service\SubscriptionService->create(Array)
+#9 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Customer->payment()
+#10 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+#11 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\wamp64\www\brandstrong\index.php(45): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2020-07-18 01:42:10 --> You must use the "set" method to update an entry.
+#0 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2430): CodeIgniter\Database\BaseBuilder->validateUpdate()
+#1 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\Model.php(889): CodeIgniter\Database\BaseBuilder->update()
+#2 D:\wamp64\www\brandstrong\app\Controllers\Customer.php(774): CodeIgniter\Model->update(Array, Array)
+#3 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Customer->payment()
+#4 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+#5 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\brandstrong\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-07-18 01:44:02 --> You must use the "set" method to update an entry.
+#0 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2430): CodeIgniter\Database\BaseBuilder->validateUpdate()
+#1 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\Model.php(889): CodeIgniter\Database\BaseBuilder->update()
+#2 D:\wamp64\www\brandstrong\app\Controllers\Customer.php(774): CodeIgniter\Model->update(Array, Array)
+#3 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Customer->payment()
+#4 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+#5 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\brandstrong\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-07-18 01:53:25 --> Call to undefined method CodeIgniter\Database\MySQLi\Builder::getRow()
+#0 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Customer->checkLogin()
+#1 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+#2 D:\wamp64\www\brandstrong\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\wamp64\www\brandstrong\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
